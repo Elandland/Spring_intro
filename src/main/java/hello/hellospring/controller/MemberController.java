@@ -19,6 +19,7 @@ public class MemberController {
     //Dependancy injection
     public MemberController(MemberService memberService) {
         this.memberService = memberService;
+        System.out.println("memberservice = " + memberService.getClass());
     }
 
     @GetMapping("/members/new")

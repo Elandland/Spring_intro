@@ -21,12 +21,15 @@ public class MemberService {
      * 회원가입
      */
     public Long join(Member member){
-        //같은 이름이 있는 중복 회원은 안된다 ->우리는 같은 PN으로 하면 됨 (UID를 걍 PN으로 할까)
-        validateDuplicateMember(member);    //중복회원 검증
-        memberRepository.save(member);
-        return member.getId();
 
-    }
+            //같은 이름이 있는 중복 회원은 안된다 ->우리는 같은 PN으로 하면 됨 (UID를 걍 PN으로 할까)
+            validateDuplicateMember(member);    //중복회원 검증
+            memberRepository.save(member);
+            return member.getId();
+
+        }
+
+
 
     private void validateDuplicateMember(Member member) {
         memberRepository.findByName(member.getName())       //이미 findByName()의 반환 값이 Optional이므로
@@ -40,7 +43,7 @@ public class MemberService {
      * 전체 회원 조회
      */
     public List<Member> findMembers(){      //사용자 다 찾기
-        return memberRepository.findAll();
+            return memberRepository.findAll();
     }
 
     public Optional<Member> findOne(Long memberID){     //사용자 하나만 찾기
